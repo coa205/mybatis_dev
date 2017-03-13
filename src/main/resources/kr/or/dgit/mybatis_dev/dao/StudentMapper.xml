@@ -6,6 +6,18 @@
 		select stud_id, name, email, phone, dob from students
 	</sql>
 	
+	<sql id="updateSql">
+		Update students set name=#{name}, email=#{email}, phone=#{phone}, dob=#{dob}
+	</sql>
+	
+	<sql id="insertSql">
+		insert into students(stud_id, name, email, phone, dob) values (#{studId}, #{name}, #{email}, #{phone}, #{dob})
+	</sql>
+	
+	<sql id="deleteSql">
+		delete from students
+	</sql>
+	
 	<sql id="whereSql">
 		<where>
 			<if test="studId != null">
@@ -20,9 +32,27 @@
 		<include refid="selectSql"/>
 		<include refid="whereSql"/>
 	</select>
+	
+	<select id="selectStudentByAll" parameterType="Student" resultType="Student">
+		<include refid="selectSql"/>
+	</select>
 
 	<select id="selectOne" parameterType="Student" resultType="Student">
 		<include refid="selectSql"/>
 		<include refid="whereSql"/>
 	</select>
+	
+	<update id="updateStudent" parameterType="Student">
+		<include refid="updateSql"/>
+		<include refid="whereSql"/>
+	</update>
+	
+	<insert id="insertStudent" parameterType="Student">
+		<include refid="insertSql"/>
+	</insert>
+	
+	<delete id="deleteStudent" parameterType="Student">
+		<include refid="deleteSql"/>
+		<include refid="whereSql"/>
+	</delete>
 </mapper>

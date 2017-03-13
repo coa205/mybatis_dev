@@ -71,5 +71,4 @@ public class Student {
 	public String toString() {
 		return String.format("%s %s %s %s %s", studId, name, email, dob, phone);
 	}
-
 }

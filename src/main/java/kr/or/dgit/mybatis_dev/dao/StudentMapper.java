@@ -21,12 +21,12 @@ public interface StudentMapper {
 	
 	int updateStudent(Student student);
 	int updateStudentApi(Student student);
-	@Update("Update students set name=${name}, email=#{email}, phone=#{phone}, dob=#{dob} where stud_id = #{studId}")
+	@Update("Update students set name=#{name}, email=#{email}, phone=#{phone}, dob=#{dob} where stud_id = #{studId}")
 	int updateStudentAnnotation(Student student);
 	
 	int insertStudent(Student student);
 	int insertStudentApi(Student student);
-	@Update("insert into students(stud_id, name, email, phone, dob) values (#{studId}, #{name}, #{email}, #{phone}, #{dob}")
+	@Update("insert into students(stud_id, name, email, phone, dob) values (#{studId}, #{name}, #{email}, #{phone}, #{dob})")
 	int insertStudentAnnotation(Student student);
 	
 	int deleteStudent(Student student);
