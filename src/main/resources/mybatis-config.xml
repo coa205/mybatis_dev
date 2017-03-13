@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE configuration
-PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
-"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
+	
 	<properties resource="application.properties"/>
-
+	
+	<settings>
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
+	</settings>
+	
 	<typeAliases>
-		<!-- <package name="kr.or.dgit.mybatis_dev_teacher.dto"/> -->
+		<package name="kr.or.dgit.mybatis_dev.dto"/>
 	</typeAliases>
 	
 	<typeHandlers>
-		<!-- <package name="kr.or.dgit.mybatis_dev_teacher.typehandlers"/> -->
+		<package name="kr.or.dgit.mybatis_dev.typehandlers"/>
 	</typeHandlers>
 	
 	<environments default="development">
@@ -25,6 +28,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		</environment>
 	</environments>
 	<mappers>
-		<!-- <package name="kr.or.dgit.mybatis_dev_teacher.dao"/> -->
+		<package name="kr.or.dgit.mybatis_dev.dao"/>
 	</mappers>
 </configuration>

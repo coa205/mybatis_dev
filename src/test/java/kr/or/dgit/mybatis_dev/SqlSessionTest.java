@@ -1,4 +1,4 @@
-package kr.or.dgit.mybatis_dev_teacher;
+package kr.or.dgit.mybatis_dev;
 
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.junit.AfterClass;
@@ -6,7 +6,7 @@ import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import kr.or.dgit.mybatis_dev_teacher.util.MybatisSqlSessionFactory;
+import kr.or.dgit.mybatis_dev.util.MybatisSqlSessionFactory;
 
 public class SqlSessionTest {
 	private static SqlSessionFactory sqlSessionFactory;

@@ -1,4 +1,4 @@
-package kr.or.dgit.mybatis_dev_teacher.util;
+package kr.or.dgit.mybatis_dev.util;
 
 import java.io.IOException;
 import java.io.InputStream;
