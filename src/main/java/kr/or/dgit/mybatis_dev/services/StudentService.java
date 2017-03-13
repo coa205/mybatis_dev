@@ -42,23 +42,38 @@ public class StudentService {
 		}
 	}
 	
-	/*public List<Student> findStudentByAllApi(){
-		log.debug("findStudentByNoApi()");
+	public List<Student> findStudentByAllApi(){
+		log.debug("findStudentByAllApi()");
 		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession();){
-			sqlSession.selectOne(namespace+".selectOne");
-			return sqlSession.selectOne(namespace+".selectOne");
+			return sqlSession.selectList(namespace+".selectOne");
 		}
 	}
 	
 	public List<Student> findStudentByAllAnnotation(){
-		log.debug("findStudentByNoApi()");
+		log.debug("findStudentByAllAnnotation()");
 		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession();){
 			return sqlSession.getMapper(StudentMapper.class).selectStudentByAll();
 		}
-	}*/
+	}
 	
 	public int findUpdateStudent(Student student){
 		log.debug("findUpdateStudent()");
+		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession();){
+			int res = sqlSession.getMapper(StudentMapper.class).updateStudent(student);
+			sqlSession.commit();
+			return res;
+		}
+	}
+	
+	public int findUpdateStudentApi(Student student){
+		log.debug("findUpdateStudentApi()");
+		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession();){
+			return sqlSession.update(namespace+".updateStudent", student);
+		}
+	}
+	
+	public int findUpdateStudentAnnotation(Student student){
+		log.debug("findUpdateStudentAnnotation()");
 		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession();){
 			int res = sqlSession.getMapper(StudentMapper.class).updateStudent(student);
 			sqlSession.commit();
@@ -75,8 +90,40 @@ public class StudentService {
 		}
 	}
 	
+	public int findInsertStudentApi(Student student){
+		log.debug("findInsertStudentApi()");
+		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession();){
+			return sqlSession.insert(namespace+".insertStudent", student);
+		}
+	}
+	
+	public int findInsertStudentAnnotation(Student student){
+		log.debug("findInsertStudentAnnotation()");
+		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession();){
+			int res = sqlSession.getMapper(StudentMapper.class).insertStudent(student);
+			sqlSession.commit();
+			return res;
+		}
+	}
+	
 	public int findDeleteStudent(Student student){
 		log.debug("findDeleteStudent()");
+		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession();){
+			int res = sqlSession.getMapper(StudentMapper.class).deleteStudent(student);
+			sqlSession.commit();
+			return res;
+		}
+	}
+	
+	public int findDeleteStudentApi(Student student){
+		log.debug("findDeleteStudentApi()");
+		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession();){
+			return sqlSession.delete(namespace+".deleteStudent", student);
+		}
+	}
+	
+	public int findDeleteStudentAnnotation(Student student){
+		log.debug("findDeleteStudentAnnotation()");
 		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession();){
 			int res = sqlSession.getMapper(StudentMapper.class).deleteStudent(student);
 			sqlSession.commit();
