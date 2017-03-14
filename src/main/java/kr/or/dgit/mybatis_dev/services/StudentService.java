@@ -8,7 +8,9 @@ import org.apache.ibatis.logging.LogFactory;
 import org.apache.ibatis.session.SqlSession;
 
 import kr.or.dgit.mybatis_dev.dao.StudentMapper;
+import kr.or.dgit.mybatis_dev.dao.TutorMapper;
 import kr.or.dgit.mybatis_dev.dto.Student;
+import kr.or.dgit.mybatis_dev.dto.Tutor;
 import kr.or.dgit.mybatis_dev.util.MybatisSqlSessionFactory;
 
 public class StudentService {
@@ -54,6 +56,13 @@ public class StudentService {
 		log.debug("selectStudentByNoWithAddress()");
 		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession()){
 			return sqlSession.selectOne(namespace+".selectStudentByNoWithAddress", student);
+		}
+	}
+	
+	public Tutor findTutorById(int id){
+		log.debug("findTutorById()");
+		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession()){
+			return sqlSession.getMapper(TutorMapper.class).findTutorById(id);
 		}
 	}
 }
