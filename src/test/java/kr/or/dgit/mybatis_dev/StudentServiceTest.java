@@ -1,5 +1,6 @@
 package kr.or.dgit.mybatis_dev;
 
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -42,153 +43,21 @@ public class StudentServiceTest {
 		System.out.println("tearDown()");
 	}
 
-	@Test
-	public void atestFindStudentByNo() {
+	///////////////////////////////////////////////////////
+	
+	@Test 
+	public void aTestSelectStudentByNoForResultMap(){
 		Student std = new Student();
 		std.setStudId(1);
 		
-		Student findStd = studentService.findStudentByNo(std);
-		Assert.assertNotNull(findStd);
-	}
-
-	@Test
-	public void btestFindStudentByNoApi(){
-		Student std = new Student();
-		std.setStudId(1);
-		
-		Student findStd = studentService.findStudentByNoApi(std);
-		Assert.assertNotNull(findStd);
+		Student selectStudent = studentService.selectStudentByNoForResultMap(std);
+		Assert.assertNotNull(selectStudent);
 	}
 	
-	@Test
-	public void ctestFindStudentByNoAnnotation(){
-		Student std = new Student();
-		std.setStudId(1);
-		
-		Student findStd = studentService.findStudentByNoAnnotation(std);
-		Assert.assertNotNull(findStd);
-	}
-	
-	@Test
-	public void mtestfindStudentByAll() {
-		List<Student> findStd = studentService.findStudentByAll();
-		Assert.assertNotNull(findStd);
-	}
-	
-	@Test
-	public void ntestfindStudentByAllApi() {
-		List<Student> findStd = studentService.findStudentByAllApi();
-		Assert.assertNotNull(findStd);
-	}
-	
-	@Test
-	public void otestFindStudentByAllAnnotation(){
-		List<Student> findStd = studentService.findStudentByAllAnnotation();
-		Assert.assertNotNull(findStd);
-	}
-	
-	@Test
-	public void dtestfindUpdateStudent() {
-		Student std = new Student();
-		std.setName("홍자바");
-		std.setEmail("hjv@test.com");
-		std.setPhone(new PhoneNumber("010","344","1212"));
-		std.setDob(new Date());
-		std.setStudId(2);
-		
-		int findStd = studentService.findUpdateStudent(std);
-		Assert.assertNotNull(findStd);
-	}
-	
-	@Test
-	public void etestfindUpdateStudentApi() {
-		Student std = new Student();
-		std.setName("홍자바");
-		std.setEmail("hjv@test.com");
-		std.setPhone(new PhoneNumber("010","344","1212"));
-		std.setDob(new Date());
-		std.setStudId(2);
-		
-		int findStd = studentService.findUpdateStudentApi(std);
-		Assert.assertNotNull(findStd);
-	}
-	
-	@Test
-	public void ftestfindUpdateStudentAnnotation() {
-		Student std = new Student();
-		std.setName("홍자바");
-		std.setEmail("hjv@test.com");
-		std.setPhone(new PhoneNumber("010","344","1212"));
-		std.setDob(new Date());
-		std.setStudId(2);
-		
-		int findStd = studentService.findUpdateStudentAnnotation(std);
-		Assert.assertNotNull(findStd);
-	}
-	
-	@Test
-	public void gtestfindInsertStudent() {
-		Student std = new Student();
-		std.setStudId(3);
-		std.setName("김자바");
-		std.setEmail("kjv@test.com");
-		std.setPhone(new PhoneNumber("010","999","6666"));
-		std.setDob(new Date());
-		
-		int findStd = studentService.findInsertStudent(std);
-		Assert.assertNotNull(findStd);
-	}
-	
-	@Test
-	public void htestfindInsertStudentApi() {
-		Student std = new Student();
-		std.setStudId(4);
-		std.setName("김자바");
-		std.setEmail("kjv@test.com");
-		std.setPhone(new PhoneNumber("010","999","6666"));
-		std.setDob(new Date());
-		
-		int findStd = studentService.findInsertStudentApi(std);
-		Assert.assertNotNull(findStd);
-	}
-	
-	@Test
-	public void itestfindInsertStudentAnnotation() {
-		Student std = new Student();
-		std.setStudId(5);
-		std.setName("김자바");
-		std.setEmail("kjv@test.com");
-		std.setPhone(new PhoneNumber("010","999","6666"));
-		std.setDob(new Date());
-		
-		int findStd = studentService.findInsertStudentAnnotation(std);
-		Assert.assertNotNull(findStd);
-	}
-	
-	@Test
-	public void jtestfindDeleteStudent(){
-		Student std = new Student();
-		std.setStudId(3);
-		
-		int findStd = studentService.findDeleteStudent(std);
-		Assert.assertNotNull(findStd);
-	}
-	
-	@Test
-	public void ktestfindDeleteStudentApi(){
-		Student std = new Student();
-		std.setStudId(4);
-		
-		int findStd = studentService.findDeleteStudentApi(std);
-		Assert.assertNotNull(findStd);
-	}
-	
-	@Test
-	public void ltestfindDeleteStudentAnnotation(){
-		Student std = new Student();
-		std.setStudId(5);
-		
-		int findStd = studentService.findDeleteStudentAnnotation(std);
-		Assert.assertNotNull(findStd);
+	@Test 
+	public void bTestSelectStudentByALLForResultMap(){
+		List<Student> lists = studentService.selectStudentByAllForResultMap();
+		List<Student> emptyList = Collections.emptyList();
+		Assert.assertNotEquals(emptyList, lists);
 	}
 }
