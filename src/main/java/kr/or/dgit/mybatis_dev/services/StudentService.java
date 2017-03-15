@@ -59,6 +59,15 @@ public class StudentService {
 		}
 	}
 	
+	public int updateSetStudent(Student student){
+		log.debug("updateSetStudent()");
+		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession()){
+			int res = sqlSession.update(namespace+".updateSetStudent", student);
+			sqlSession.commit();
+			return res;
+		}
+	}
+	
 	public Tutor findTutorById(int id){
 		log.debug("findTutorById()");
 		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession()){

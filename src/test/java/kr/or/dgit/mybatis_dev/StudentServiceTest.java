@@ -1,9 +1,6 @@
 package kr.or.dgit.mybatis_dev;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
+import java.util.Date;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -14,9 +11,8 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
-import kr.or.dgit.mybatis_dev.dto.Course;
+import kr.or.dgit.mybatis_dev.dto.PhoneNumber;
 import kr.or.dgit.mybatis_dev.dto.Student;
-import kr.or.dgit.mybatis_dev.dto.Tutor;
 import kr.or.dgit.mybatis_dev.services.StudentService;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -47,7 +43,7 @@ public class StudentServiceTest {
 
 	///////////////////////////////////////////////////////
 	
-	@Test 
+	/*@Test 
 	public void aTestSelectStudentByNoForResultMap(){
 		Student std = new Student();
 		std.setStudId(1);
@@ -61,11 +57,11 @@ public class StudentServiceTest {
 		List<Student> lists = studentService.selectStudentByAllForResultMap();
 		List<Student> emptyList = Collections.emptyList();
 		Assert.assertNotEquals(emptyList, lists);
-	}
+	}*/
 	
 	///////////////////////////////////////////////////////
 	
-	@Test 
+	/*@Test 
 	public void cTestSelectStudentByNoForHashMap(){
 		Student std = new Student();
 		std.setStudId(1);
@@ -119,5 +115,17 @@ public class StudentServiceTest {
 			Assert.assertNotNull(course);
 			System.out.println(course);
 		}
+	}*/
+	
+	@Test
+	public void aTestUpdateSetStudent(){
+		Student student = new Student();
+		student.setStudId(2);
+		student.setEmail("nojam@test.com");
+		student.setPhone(new PhoneNumber("010-787-3434"));
+		student.setDob(new Date());
+		
+		int result = studentService.updateSetStudent(student);
+		Assert.assertNotNull(result);
 	}
 }

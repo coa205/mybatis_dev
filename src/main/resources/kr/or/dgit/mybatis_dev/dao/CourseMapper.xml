@@ -10,4 +10,74 @@
 		<result property="endDate" column="end_date"/>
 	</resultMap>
 
+	<select id="searchCourse" parameterType="hashmap" resultMap="CourseResult">
+		select * from courses where TUTOR_ID = #{tutorId}
+		<if test="courseName != null"><!-- map.getkey{"courseName"} --> 
+			and name like #{courseName}
+		</if> 
+		<if test="startDate != null">
+			and START_DATE &gt;= #{startDate} <!-- &gt; : > -->
+		</if>
+		<if test="endDate != null">
+			and end_date &lt;= #{endDate} <!-- &lt; : < -->
+		</if>
+	</select>
+	
+	<select id="searchCaseCourse" parameterType="hashmap" resultMap="CourseResult">
+		select * from courses
+		<choose>
+			<when test="searchBy=='Tutor'">
+				where tutor_id=#{tutorId}
+			</when>
+			<when test="searchBy=='CourseName'">
+				where name like #{courseName}
+			</when>
+			<otherwise>
+				where end_date &gt;=now() <!-- now() <-? -->
+			</otherwise>
+		</choose>
+	</select>
+	
+	<select id="searchWhereCourse" parameterType="hashmap" resultMap="CourseResult">
+		select * from courses
+		<where>
+			<if test="tutorId != null">
+				tutor_id = #{tutorId}
+			</if>
+			<if test="courseName != null">
+				and name like #{courseName}
+			</if>
+			<if test="startDate != null">
+				and start_date &gt;= #{startDate}
+			</if>
+			<if test="endDate != null">
+				and end_date &lt;= #{endDate}
+			</if>
+		</where>
+	</select>
+	
+	<select id="searchTrimCourse" parameterType="hashmap" resultMap="CourseResult">
+		select * from courses
+		<trim prefix="where" prefixOverrides="AND | OR">
+			<if test="tutorId != null">
+				tutor_id = #{tutorId}
+			</if>
+			<if test="courseName != null">
+				and name like #{courseName}
+			</if>
+		</trim>
+	</select>
+	
+	<select id="searchForeachCourse" parameterType="map" resultMap="CourseResult">
+		select * from courses
+		<if test="tutorIds != null">
+			<where>
+				tutor_id IN
+				<foreach item="tutorId" collection="tutorIds" index="index"
+						 open="(" close=")" separator=",">
+					#{tutorId}
+				</foreach>
+			</where>
+		</if>
+	</select>
 </mapper>
