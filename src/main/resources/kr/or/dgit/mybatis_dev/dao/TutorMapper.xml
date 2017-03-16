@@ -6,6 +6,8 @@
 		<id property="tutorId" column="tutor_id"/>
 		<result property="name" column="tutor_name"/>
 		<result property="email" column="email"/>
+		<result property="phone" column="phone"/>
+		<result property="gender" column="gender"/>
 		<collection property="courses" resultMap="kr.or.dgit.mybatis_dev.dao.CourseMapper.CourseResult"></collection>
 	</resultMap>
 	
@@ -16,4 +18,7 @@
 		where T.tutor_id=#{tutorId}
 	</select>
 
+	<insert id="insertTutor" parameterType="Tutor">
+		insert into tutors(tutor_id, name, email, phone, gender) values (#{tutorId}, #{name}, #{email}, #{phone}, #{gender})
+	</insert>
 </mapper>

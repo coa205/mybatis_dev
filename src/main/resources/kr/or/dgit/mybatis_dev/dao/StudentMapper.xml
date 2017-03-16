@@ -85,6 +85,7 @@
 			<if test="email != null">email=#{email},</if>
 			<if test="phone != null">phone=#{phone},</if>
 			<if test="dob != null">dob=#{dob},</if>
+			<if test="gender != null">gender=#{gender},</if>
 		</set>
 		where stud_id=#{studId}
 	</update>

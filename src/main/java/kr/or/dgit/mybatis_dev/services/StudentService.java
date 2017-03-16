@@ -67,11 +67,4 @@ public class StudentService {
 			return res;
 		}
 	}
-	
-	public Tutor findTutorById(int id){
-		log.debug("findTutorById()");
-		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession()){
-			return sqlSession.getMapper(TutorMapper.class).findTutorById(id);
-		}
-	}
 }

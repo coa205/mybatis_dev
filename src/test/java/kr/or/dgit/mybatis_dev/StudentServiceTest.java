@@ -11,6 +11,7 @@ import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
 
+import kr.or.dgit.mybatis_dev.dto.Gender;
 import kr.or.dgit.mybatis_dev.dto.PhoneNumber;
 import kr.or.dgit.mybatis_dev.dto.Student;
 import kr.or.dgit.mybatis_dev.services.StudentService;
@@ -102,25 +103,13 @@ public class StudentServiceTest {
 		
 		Student selectStudent = studentService.selectStudentByNoAssociationAddress(std);
 		Assert.assertNotNull(selectStudent);
-	}
-	
-	@Test
-	public void gTestFindTutorById(){
-		Tutor tutor = studentService.findTutorById(1);
-		Assert.assertNotNull(tutor);
-		System.out.println("testFindTutorById()"+tutor);
-		List<Course> courses = tutor.getCourses();
-		Assert.assertNotNull(courses);
-		for(Course course : courses) {
-			Assert.assertNotNull(course);
-			System.out.println(course);
-		}
 	}*/
 	
 	@Test
 	public void aTestUpdateSetStudent(){
 		Student student = new Student();
 		student.setStudId(2);
+		student.setGender(Gender.FEMALE);
 		student.setEmail("nojam@test.com");
 		student.setPhone(new PhoneNumber("010-787-3434"));
 		student.setDob(new Date());
