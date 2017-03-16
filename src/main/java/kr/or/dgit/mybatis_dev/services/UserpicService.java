@@ -8,7 +8,7 @@ import kr.or.dgit.mybatis_dev.dto.UserPic;
 import kr.or.dgit.mybatis_dev.util.MybatisSqlSessionFactory;
 
 public class UserpicService {
-	public UserPic findTutorById(int id){
+	public UserPic findUserPic(int id){
 		try(SqlSession sqlSession = MybatisSqlSessionFactory.openSession()){
 			UserpicMapper userPicMapper = new UserpicMapperImpl(sqlSession);
 			UserPic userPic = userPicMapper.selectUserPicById(id);
