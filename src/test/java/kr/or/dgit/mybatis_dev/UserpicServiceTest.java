@@ -29,7 +29,7 @@ public class UserpicServiceTest {
 		userpicService = null;
 	}
 
-	@Test
+	/*@Test
 	public void aTestInsertUserPic(){
 		byte[] pic = null;
 		File file = new File(System.getProperty("user.dir")+"\\DataFiles\\icon_72_1.png");
@@ -61,5 +61,5 @@ public class UserpicServiceTest {
 		}catch (IOException e){
 			e.printStackTrace();
 		}	
-	}
+	}*/
 }

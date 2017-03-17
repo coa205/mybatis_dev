@@ -17,4 +17,6 @@ public interface StudentMapper {
 	Student selectStudentByNoAssociationAddress(Student student);
 	
 	int updateSetStudent(Student student);
+	
+	
 }
